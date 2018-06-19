@@ -13,9 +13,7 @@
 @property (strong, nonatomic) IBOutlet UIView *TimerDisplay;
 @property(strong) UIPageViewController *pagerViewController;
 @property (strong) NSMutableArray<UIButton *> *buttons;
-@property (strong) NSMutableArray<TimerAreaViewController *> *timerAreas;
-@property (strong) NSMutableDictionary<NSNumber *, NSMutableArray<NSNumber*> *> *countdowns;
-@property (strong) NSTimer *timer;
+@property (strong) NSMutableArray<TimerAreaViewController *> *timerViews;
 
 @end
 
@@ -35,13 +33,13 @@
     self.pagerViewController.dataSource = self;
     [[self.pagerViewController view] setFrame:[self.TimerDisplay frame]];
     int i = 0;
-    self.timerAreas= [[NSMutableArray alloc] initWithCapacity:6];
+    self.timerViews= [[NSMutableArray alloc] initWithCapacity:6];
     while (i < 6) {
-    TimerAreaViewController *tmp = [self viewControllerAtIndex:i];
-        [self.timerAreas addObject:tmp];
+        TimerAreaViewController *tmp = [[TimerAreaViewController alloc] initWith:i];
+        [self.timerViews addObject:tmp];
         i++;
     }
-    NSArray *tmp = [NSArray arrayWithObject:self.timerAreas.firstObject];
+    NSArray *tmp = [NSArray arrayWithObject:self.timerViews.firstObject];
     [self.pagerViewController setViewControllers:tmp direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     [self addChildViewController:self.pagerViewController];
     [[self view] addSubview:[self.pagerViewController view]];
@@ -54,12 +52,10 @@
     self.buttons = [[NSMutableArray<UIButton *> alloc] initWithCapacity:6];
     while (i < 6) {
         UIButton *tmp;
-        if (i < 3) {
-         tmp =[[UIButton alloc] initWithFrame:CGRectMake(2 + ((i%3) * self.view.frame.size.width /3), self.view.frame.size.height / 10, self.view.frame.size.width / 3 , 70)];
-        }
+        if (i < 3)
+         tmp = [[UIButton alloc] initWithFrame:CGRectMake(2 + ((i%3) * self.view.frame.size.width /3), self.view.frame.size.height / 10, self.view.frame.size.width / 3 , 70)];
         else
-        tmp =[[UIButton alloc] initWithFrame:CGRectMake(2 + ((i%3) * self.view.frame.size.width /3), (self.view.frame.size.height / 10) * 3, self.view.frame.size.width / 3 , 70)];
-
+        tmp = [[UIButton alloc] initWithFrame:CGRectMake(2 + ((i%3) * self.view.frame.size.width /3), (self.view.frame.size.height / 10) * 3, self.view.frame.size.width / 3 , 70)];
         [tmp setTitle:[NSString stringWithFormat:@"Button %d", i+1] forState:UIControlStateNormal];
         [tmp setTag:i];
         [tmp addTarget:self action:@selector(startCountDown:)
@@ -73,10 +69,7 @@
 }
 
 -(void)startCountDown:(id)sender{
-    
-    UIButton * tmp = sender;
-    NSNumber *key = [NSNumber numberWithInteger:tmp.tag];
-    [self.timerAreas[key.integerValue] startTimer];
+    [self.timerViews[((UIButton *)sender).tag] startTimer];
 }
 
 
@@ -91,30 +84,21 @@
     
     NSUInteger index = [(TimerAreaViewController *)viewController index];
     
-    if (index == 0) {
+    if (index == 0)
         return nil;
-    }
     index--;
-    return self.timerAreas[index];
+    return self.timerViews[index];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     
     NSUInteger index = [(TimerAreaViewController *)viewController index];
     index++;
-    if (index == 6) {
+    if (index == 6)
         return nil;
-    }
-    return self.timerAreas[index];
+    return self.timerViews[index];
 }
 
-
-- (TimerAreaViewController *)viewControllerAtIndex:(NSUInteger)index {
-    
-    TimerAreaViewController *childViewController = [[TimerAreaViewController alloc] initWith:index];    
-    return childViewController;
-    
-}
 
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
