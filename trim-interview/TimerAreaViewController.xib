@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimerAreaViewController">
+            <connections>
+                <outlet property="nameLabel" destination="M6R-M9-fUq" id="1ug-Iu-oXd"/>
+                <outlet property="timeLabel" destination="r1K-1f-Eir" id="vdV-Wq-Jhl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="363" height="242"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1K-1f-Eir">
+                    <rect key="frame" x="162" y="169.5" width="38" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.045027771313315298" green="0.10822645679684513" blue="0.81516212224960327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Count down timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yi-3v-8Fh">
+                    <rect key="frame" x="113" y="110.5" width="137" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6R-M9-fUq">
+                    <rect key="frame" x="159" y="58" width="45" height="27.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="M6R-M9-fUq" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="58" id="7LX-FZ-Bpl"/>
+                <constraint firstItem="2Yi-3v-8Fh" firstAttribute="centerX" secondItem="r1K-1f-Eir" secondAttribute="centerX" id="9Zc-ah-uXK"/>
+                <constraint firstItem="2Yi-3v-8Fh" firstAttribute="top" secondItem="M6R-M9-fUq" secondAttribute="bottom" constant="25" id="9l7-Zc-dqL"/>
+                <constraint firstItem="M6R-M9-fUq" firstAttribute="centerX" secondItem="2Yi-3v-8Fh" secondAttribute="centerX" id="SBC-Qw-Xko"/>
+                <constraint firstItem="2Yi-3v-8Fh" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Vkj-Is-fsf"/>
+                <constraint firstItem="2Yi-3v-8Fh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="e2v-1r-BUD"/>
+                <constraint firstItem="r1K-1f-Eir" firstAttribute="top" secondItem="2Yi-3v-8Fh" secondAttribute="bottom" constant="38" id="jGI-b8-SbI"/>
+                <constraint firstItem="r1K-1f-Eir" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="nsX-GB-9o6"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="31.5" y="-154"/>
+        </view>
+    </objects>
+</document>
